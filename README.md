@@ -1,24 +1,24 @@
-# Map Stories Backend
+# MapStories (backend)
 
-Map Stories is a location based storytelling app. Editors can create map based stories and place markers on the map. Each marker is associated with an event, which has information and attachments.
+MapStories is a location based storytelling app where editors can create map based stories.
+![App screenshot](https://github.com/karstenba/mapStories-frontend/blob/develop/example.png)
 
-## Motivation
-People have a difficult time understanding stories that take place on an unfamiliar map. By locating the narrative key points of a story on a map, Map Stories help story makers orient their viewers.
-
-## Installation
-Clone the Map Stories Backend repo from the root folder
-Clone the [Map Stories Frontend](https://github.com/fredpinon/map-stories-front-end/tree/develop/MapStories) repo, then `$npm i`
-
-## Usage with Postman
-Download the [Map Stories Collection](https://documenter.getpostman.com/view/2573635/map-story-localhost/71FXBMv).
-Go into the repo's server and run `nodemon index.js`
-In postman, use the 'Create Editor' route and create an editor with name, email and token. Token is a string.
-In Postman: Manage Environments > Globals
-Under Key, set a property, Token and input the dummy token to test authenticated routes.
-
+## Getting Started
+To run locally:
+1) Clone && `npm install`
+2) Have an instance of MongoDB running
+3) `npm start`
 
 ## Tech Stack
-- Koa
-- MongoDB
-- Mongoose
-- Mocha, Chai and Sinon
+* [Koa](koajs.com)
+* [MongoDB](mongodb.com) & [Mongoose](mongoosejs.com)
+
+## Credits
+
+A bit **thank you** to the original team that started this project! The original repos are to found here:
+* [frontend](https://github.com/fredpinon/map-stories-front-end)
+* [backend](https://github.com/isabellachen/map-stories-backend)
+
+## License
+
+MIT
