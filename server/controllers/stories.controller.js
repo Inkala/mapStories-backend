@@ -3,12 +3,12 @@ const Story = require('../model/story.model');
 const Editor = require('../model/editor.model');
 const Event = require('../model/event.model').Event;
 const AWS = require('aws-sdk')
-const Credentials = require('../credentials');
+// const Credentials = require('../credentials');
 
 AWS.config.update({
   region: 'eu-west-2',
-  accessKeyId: Credentials.AWS_ACCESS_KEY_ID,
-  secretAccessKey: Credentials.AWS_ACCESS_KEY_SECRET
+  accessKeyId: "AKIAJI4TTNG4UO27BYTQ",
+  secretAccessKey: "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"
 })
 
 const s3 = new AWS.S3();
