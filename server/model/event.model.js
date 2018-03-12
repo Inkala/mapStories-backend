@@ -18,7 +18,7 @@ const eventSchema = new Schema({
     lat: String,
     lng: String,
   },
-  attachments: [attachmentSchema],
+  attachments: [attachmentSchema]
 });
 
 const Event = mongoose.model('Event', eventSchema);

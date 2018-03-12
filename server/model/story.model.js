@@ -17,7 +17,7 @@ const storySchema = new Schema({
   duration: String,
   published: Boolean,
   events:[{ type: Schema.Types.ObjectId, ref: 'Event' }],
-});
+},{ usePushEach: true });
 
 const Story = mongoose.model('Story', storySchema);
 

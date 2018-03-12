@@ -3,8 +3,6 @@ const Story = require('../model/story.model');
 const Event = require('../model/event.model').Event;
 const Attachment = require('../model/event.model').Attachment;
 
-require('../db')('mapstory-backend-test');
-
 //Adds event to events array within story object
 const addEvent = async (ctx, next) => {
   try {
@@ -119,7 +117,7 @@ const deleteEvent = async (ctx, next) => {
       }
     }
     story.save();
-    // await Event.findByIdAndRemove(ctx.params.eventId)
+    await Event.findByIdAndRemove(ctx.params.eventId)
     ctx.status = 204;
   } catch (error) {
     throw (401, 'Could not edit event!');
