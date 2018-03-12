@@ -6,6 +6,7 @@ const Attachment = require('../model/event.model').Attachment;
 //Adds event to events array within story object
 const addEvent = async (ctx, next) => {
   try {
+    console.log(ctx.body)
     if (ctx.request.body.title) {
       let story = await Story.findOne({_id: ctx.params.id, editor: ctx.user._id});
       if (!story) ctx.throw(404);

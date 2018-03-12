@@ -6,9 +6,9 @@ const AWS = require('aws-sdk')
 // const Credentials = require('../credentials');
 
 AWS.config.update({
-  region: 'eu-west-2',
-  accessKeyId: "AKIAJI4TTNG4UO27BYTQ",
-  secretAccessKey: "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"
+  region: 'us-west-2',
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_ACCESS_KEY_SECRET
 })
 
 const s3 = new AWS.S3();
@@ -16,7 +16,7 @@ const s3 = new AWS.S3();
 const getToken = (ctx, next) => {
   try {
     const res = s3.createPresignedPost({
-      Bucket: 'map-story-photos',
+      Bucket: 'map-stories-v3',
       Conditions: [
         ['starts-with', '$key', `event-${ctx.params.eventId}/`]
       ]
@@ -26,8 +26,6 @@ const getToken = (ctx, next) => {
     ctx.throw(400, 'error')
   }
 }
-
-
 
 const getAllStories = async (ctx, next) => {
   try {

@@ -8,7 +8,7 @@ const router = new Router();
 const Editor = require('./model/editor.model');
 
 const authMiddleware = async (ctx, next) => {
-
+  // console.log(ctx)
   let token = ctx.headers.authorization;
   if (token) token = token.split(' ')[1];
   if (!token) {
