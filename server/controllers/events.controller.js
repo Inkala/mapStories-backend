@@ -87,8 +87,9 @@ const editEvent = async (ctx, next) => {
     if (data.startTime) updatedProps.map = data.startTime;
     if (data.mapLocation) updatedProps.duration = data.mapLocation;
     if (data.dateAndTime) updatedProps.tagLine = data.dateAndTime;
+    if (data.attachments) updatedProps.attachments = data.attachments;
     if (data.attachments) updatedProps.published = data.attachments;
-    if (data.location) updatedProps.location = data.location;
+    // if (data.location) updatedProps.location = data.location;
 
     const eventId = ctx.params.eventId;
     await Event.findOneAndUpdate({'_id': eventId}, {$set: updatedProps});

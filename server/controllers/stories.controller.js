@@ -3,13 +3,8 @@ const Story = require('../model/story.model');
 const Editor = require('../model/editor.model');
 const Event = require('../model/event.model').Event;
 const AWS = require('aws-sdk')
-// const Credentials = require('../credentials');
 
-AWS.config.update({
-  region: 'us-west-2',
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_ACCESS_KEY_SECRET
-})
+AWS.config.loadFromPath('./config.json');
 
 const s3 = new AWS.S3();
 
@@ -20,7 +15,7 @@ const getToken = (ctx, next) => {
       Conditions: [
         ['starts-with', '$key', `event-${ctx.params.eventId}/`]
       ]
-    })
+    });
     ctx.body = res;
   } catch (e) {
     ctx.throw(400, 'error')
