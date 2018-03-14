@@ -11,7 +11,7 @@ const s3 = new AWS.S3();
 const getToken = (ctx, next) => {
   try {
     const res = s3.createPresignedPost({
-      Bucket: 'map-stories-v3',
+      Bucket: 'map-stories-east',
       Conditions: [
         ['starts-with', '$key', `event-${ctx.params.eventId}/`]
       ]
