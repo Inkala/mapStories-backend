@@ -12,7 +12,8 @@ const attachmentSchema = new Schema({
 const eventSchema = new Schema({
   title: String,
   startTime: String,
-  dateAndTime: String,
+  date: Date,
+  time: String,
   mapLocation: String,
   location: {
     lat: String,

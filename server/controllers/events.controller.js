@@ -6,7 +6,6 @@ const Attachment = require('../model/event.model').Attachment;
 //Adds event to events array within story object
 const addEvent = async (ctx, next) => {
   try {
-    console.log(ctx.body)
     if (ctx.request.body.title) {
       let story = await Story.findOne({_id: ctx.params.id, editor: ctx.user._id});
       if (!story) ctx.throw(404);
@@ -49,7 +48,8 @@ const addEvent = async (ctx, next) => {
         title: ctx.request.body.title,
         startTime: ctx.request.body.startTime,
         mapLocation: ctx.request.body.mapLocation,
-        dateAndTime: ctx.request.body.dateAndTime,
+        date: ctx.request.body.date,
+        time: ctx.request.body.time,
         location,
         attachments,
       };
@@ -84,12 +84,22 @@ const editEvent = async (ctx, next) => {
     const updatedProps = {};
 
     if (data.title) updatedProps.title = data.title;
-    if (data.startTime) updatedProps.map = data.startTime;
-    if (data.mapLocation) updatedProps.duration = data.mapLocation;
-    if (data.dateAndTime) updatedProps.tagLine = data.dateAndTime;
+    if (data.startTime) updatedProps.startTime = data.startTime;
+    if (data.mapLocation) updatedProps.mapLocation = data.mapLocation;
+    if (data.date) updatedProps.date = data.date;
+    if (data.time) updatedProps.time = data.time;
     if (data.attachments) updatedProps.attachments = data.attachments;
-    if (data.attachments) updatedProps.published = data.attachments;
+    if (data.location) updatedProps.location = data.location;
+
+
+
+    // if (data.title) updatedProps.title = data.title;
+    // if (data.startTime) updatedProps.map = data.startTime;
+    // if (data.mapLocation) updatedProps.duration = data.mapLocation;
+    // if (data.dateAndTime) updatedProps.tagLine = data.dateAndTime;
+    // if (data.attachments) updatedProps.published = data.attachments;
     // if (data.location) updatedProps.location = data.location;
+
 
     const eventId = ctx.params.eventId;
     await Event.findOneAndUpdate({'_id': eventId}, {$set: updatedProps});
